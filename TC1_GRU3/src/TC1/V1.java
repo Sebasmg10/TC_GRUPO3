@@ -63,5 +63,7 @@ public class V1 extends JFrame implements ActionListener {
 	}
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.append("Presentación del grupo 3");
-		txtS.append("\nMi nombre es: Grupo 3");	}
+		txtS.append("\nMi nombre es: Grupo 3");	
+		txtS.append("\nSegundo cambio");
+	}
 }
