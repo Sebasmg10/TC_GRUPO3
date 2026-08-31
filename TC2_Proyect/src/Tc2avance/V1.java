@@ -58,10 +58,17 @@ public class V1 extends JFrame implements ActionListener {
 			contentPane.add(btnNewButton);
 		}
 		{
+<<<<<<< HEAD
 			txtcod = new JTextField();
 			txtcod.setBounds(121, 11, 103, 20);
 			contentPane.add(txtcod);
 			txtcod.setColumns(10);
+=======
+			textField = new JTextField();
+			textField.setBounds(121, 11, 103, 20);
+			contentPane.add(textField);
+			textField.setColumns(10);
+>>>>>>> 935b28823fa173a892034ad3b535848aa7ad41e0
 		}
 		{
 			scrollPane = new JScrollPane();
@@ -77,8 +84,13 @@ public class V1 extends JFrame implements ActionListener {
 			btnRegresar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					txtS.setText("");
+<<<<<<< HEAD
 					txtcod.setText("");
 					txtcod.grabFocus();
+=======
+					textField.setText("");
+					textField.grabFocus();
+>>>>>>> 935b28823fa173a892034ad3b535848aa7ad41e0
 					
 				}
 			});
