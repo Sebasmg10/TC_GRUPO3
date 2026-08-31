@@ -5,7 +5,8 @@ public class Curso {
 	private int cod;
 	private String nom;
 	private double n1, n2;
-	public Curso(int cod, String nom, double n1, double n2) {
+	public Curso(int cod, String nom,double n1, double n2) {
+		super();
 		this.cod = cod;
 		this.nom = nom;
 		this.n1 = n1;
@@ -35,5 +36,5 @@ public class Curso {
 	public void setN2(double n2) {
 		this.n2 = n2;
 	}
-	
+
 }

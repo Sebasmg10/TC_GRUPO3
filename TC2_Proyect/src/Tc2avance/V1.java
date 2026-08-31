@@ -14,13 +14,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
 
 public class V1 extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton btnNewButton;
-	private JTextField textField;
+	private JTextField txtcod;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
 
@@ -53,14 +54,14 @@ public class V1 extends JFrame implements ActionListener {
 		{
 			btnNewButton = new JButton("Consultar");
 			btnNewButton.addActionListener(this);
-			btnNewButton.setBounds(20, 37, 89, 23);
+			btnNewButton.setBounds(20, 46, 89, 23);
 			contentPane.add(btnNewButton);
 		}
 		{
-			textField = new JTextField();
-			textField.setBounds(140, 38, 86, 20);
-			contentPane.add(textField);
-			textField.setColumns(10);
+			txtcod = new JTextField();
+			txtcod.setBounds(121, 11, 103, 20);
+			contentPane.add(txtcod);
+			txtcod.setColumns(10);
 		}
 		{
 			scrollPane = new JScrollPane();
@@ -71,9 +72,29 @@ public class V1 extends JFrame implements ActionListener {
 				scrollPane.setViewportView(txtS);
 			}
 		}
+		{
+			btnRegresar = new JButton("Regresar");
+			btnRegresar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					txtS.setText("");
+					txtcod.setText("");
+					txtcod.grabFocus();
+					
+				}
+			});
+			btnRegresar.setBounds(325, 46, 88, 22);
+			contentPane.add(btnRegresar);
+		}
+		{
+			lblNewLabel = new JLabel("Ingresa tu código:");
+			lblNewLabel.setBounds(20, 14, 97, 14);
+			contentPane.add(lblNewLabel);
+		}
 
 	}
 	ArregloCurso ac=new ArregloCurso();
+	private JButton btnRegresar;
+	private JLabel lblNewLabel;
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnNewButton) {
@@ -82,6 +103,8 @@ public class V1 extends JFrame implements ActionListener {
 	}
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
+		Imprimir("Código de alumno: " + txtcod.getText());
+		Imprimir("Alumno: Manuel Alberto Campos Rojas");
 		Listado();
 	}
 	void Listado() {
