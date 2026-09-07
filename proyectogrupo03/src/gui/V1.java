@@ -7,9 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import arreglos.Arreglonrc;
+import clases.Nrc;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -28,15 +33,15 @@ public class V1 extends JFrame implements ActionListener {
 	private JLabel lblNewLabel_2;
 	private JTextField txtcantidadactual;
 	private JLabel lblNewLabel_3;
-	private JTextField txtnombredelcurso;
+	private JTextField txtnombrecurso;
 	private JLabel lblNewLabel_4;
 	private JTextField txtdatosdocente;
 	private JPanel panel_1;
 	private JTextArea txts;
 	private JPanel panel_2;
 	private JButton BTNAGREGAR;
-	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
+	private final JButton BTNREPORTAR = new JButton("REPORTAR");
 
 	/**
 	 * Launch the application.
@@ -59,7 +64,7 @@ public class V1 extends JFrame implements ActionListener {
 	 */
 	public V1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 707, 485);
+		setBounds(100, 100, 661, 447);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -103,9 +108,9 @@ public class V1 extends JFrame implements ActionListener {
 				panel.add(lblNewLabel_3);
 			}
 			{
-				txtnombredelcurso = new JTextField();
-				panel.add(txtnombredelcurso);
-				txtnombredelcurso.setColumns(10);
+				txtnombrecurso = new JTextField();
+				panel.add(txtnombrecurso);
+				txtnombrecurso.setColumns(10);
 			}
 			{
 				lblNewLabel_4 = new JLabel("INGRESAR DATOS DEL DOCENTE");
@@ -137,13 +142,11 @@ public class V1 extends JFrame implements ActionListener {
 			contentPane.add(panel_2);
 			panel_2.setLayout(new GridLayout(1, 0, 0, 0));
 			{
+				BTNREPORTAR.addActionListener(this);
 				BTNAGREGAR = new JButton("AGREGAR");
 				BTNAGREGAR.addActionListener(this);
 				panel_2.add(BTNAGREGAR);
-			}
-			{
-				btnNewButton_1 = new JButton("REPORTAR");
-				panel_2.add(btnNewButton_1);
+				panel_2.add(BTNREPORTAR);
 			}
 			{
 				btnNewButton_2 = new JButton("BUSCAR");
@@ -152,7 +155,31 @@ public class V1 extends JFrame implements ActionListener {
 		}
 
 	}
+	Arreglonrc ar = new Arreglonrc();
+	int Leercodigo() 
+	{
+		return Integer.parseInt(txtcodigo.getText());
+	}
+	int Leercantmax() 
+	{
+	 return	Integer.parseInt(txtcantidadmaxima.getText());
+	}
+	int Leercantact() 
+	{
+		return Integer.parseInt(txtcantidadactual.getText());
+	}
+	String LeerNombreCurso() 
+	{
+		return txtnombrecurso.getText();
+	}
+	String Leerdatosdocente() 
+	{
+		return txtdatosdocente.getText();
+	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == BTNREPORTAR) {
+			do_bTNREPORTAR_actionPerformed(e);
+		}
 		if (e.getSource() == BTNAGREGAR) {
 			do_bTNAGREGAR_actionPerformed(e);
 		}
@@ -186,5 +213,22 @@ public class V1 extends JFrame implements ActionListener {
 	        {
 	        JOptionPane.showMessageDialog(null, "Verifique los datos.");
 	        }
+	}
+	protected void do_bTNREPORTAR_actionPerformed(ActionEvent e) {
+		if  (ar.Tamaño() == 0) {
+			 txts.setText("");
+			 txts.append("No existen cursos registrados.");
+		} else {
+			txts.setText("");
+			txts.append("\t--- REPORTE DE CURSOS ---\n");
+			txts.append("--------------------------  --------------------------------------------------------------------------------------\n");
+			txts.append("NRC\tCANTMAX\tCANTACTALUM\tCURSO\tDOCENTE\n");  
+		    for (int i = 0; i < ar.Tamaño(); i++) {
+		        Nrc nrcs = ar.Obtener(i);
+		        txts.append(nrcs.getCodigo()+"\t"+nrcs.getCant_max()+"\t"+nrcs.getCant_actu()+"\t\t"+nrcs.getNombreCurso()+"\t"+nrcs.getDocente()+"\n");
+		    }
+		   
+		}
+		
 	}
 }
