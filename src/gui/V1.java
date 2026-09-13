@@ -146,6 +146,10 @@ public class V1 extends JFrame implements ActionListener {
 				BTNAGREGAR = new JButton("AGREGAR");
 				BTNAGREGAR.addActionListener(this);
 				panel_2.add(BTNAGREGAR);
+				{
+					BTNMODIFICAR = new JButton("MODIFICAR");
+					panel_2.add(BTNMODIFICAR);
+				}
 				panel_2.add(BTNREPORTAR);
 			}
 			{
@@ -169,6 +173,7 @@ public class V1 extends JFrame implements ActionListener {
 
 	}
 	Arreglonrc ar = new Arreglonrc();
+	private JButton BTNMODIFICAR;
 	int Leercodigo() 
 	{
 		return Integer.parseInt(txtcodigo.getText());
