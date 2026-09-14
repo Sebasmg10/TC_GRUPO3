@@ -150,6 +150,42 @@ public class V1 extends JFrame implements ActionListener {
 					BTNMODIFICAR = new JButton("MODIFICAR");
 					panel_2.add(BTNMODIFICAR);
 				}
+				{
+					btnEliminar = new JButton("ELIMINAR");
+					btnEliminar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+							try 
+							{
+								Nrc n1 = ar.Buscar(Leercodigo()); 
+								if(n1 ==null) 
+									{
+									txts.setText("");
+									JOptionPane.showMessageDialog(null,"No se encontro el curso buscado para eliminar.");
+									txtcantidadmaxima.setText("");
+									txtcantidadactual.setText("");
+									txtcodigo.setText("");
+									txtdatosdocente.setText("");
+									}
+								else 
+								{
+									ar.Eliminar(n1);
+									txts.setText("");
+									JOptionPane.showMessageDialog(null,"Se logro eliminar con exito.");
+									txtcantidadmaxima.setText("");
+									txtcantidadactual.setText("");
+									txtcodigo.setText("");
+									txtdatosdocente.setText("");
+								}
+							} 
+							catch (Exception e2)
+							{
+							JOptionPane.showMessageDialog(null, "Verifique los datos a eliminar.");
+						}
+							}
+					});
+					panel_2.add(btnEliminar);
+				}
 				panel_2.add(BTNREPORTAR);
 			}
 			{
@@ -174,6 +210,7 @@ public class V1 extends JFrame implements ActionListener {
 	}
 	Arreglonrc ar = new Arreglonrc();
 	private JButton BTNMODIFICAR;
+	private JButton btnEliminar;
 	int Leercodigo() 
 	{
 		return Integer.parseInt(txtcodigo.getText());
