@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\infan\OneDrive\Escritorio\TC_GRUPO3-main\.metadata\.plugins\org.eclipse.jdt.core
+3562083863.index
+1865797976.index
+1446280774.index
